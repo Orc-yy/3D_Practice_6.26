@@ -5603,7 +5603,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGun: {fileID: 130797647}
-  originPos: {x: 0, y: 0, z: 0}
+  isFineSightMode: 0
+  theCam: {fileID: 963194227}
+  hit_effect_Prefab: {fileID: 4156467149122109284, guid: 8ba1ee57e66bbf6458fe3513f245e63a, type: 3}
 --- !u!82 &1131842689
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10822,6 +10824,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bf940ad15c903f4b93e170b50231b08, type: 3}
+--- !u!1 &1737103598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 069b5157edafcba4a9571e5ffba49c10, type: 3}
+  m_PrefabInstance: {fileID: 1454951234}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1737103599
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737103598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16830854, y: 1.0784178, z: 0.19826159}
+  m_Center: {x: -0.0037034228, y: 0.5391386, z: 0.00868335}
 --- !u!1 &1761132093
 GameObject:
   m_ObjectHideFlags: 0
@@ -11112,6 +11132,25 @@ Terrain:
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
+--- !u!1 &2023497597 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8bf940ad15c903f4b93e170b50231b08, type: 3}
+  m_PrefabInstance: {fileID: 394906296}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2023497598
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023497597}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2062845596
 GameObject:
   m_ObjectHideFlags: 0
