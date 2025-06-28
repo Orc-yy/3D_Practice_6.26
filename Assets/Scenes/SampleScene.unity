@@ -273,13 +273,13 @@ MonoBehaviour:
   fireRate: 0.2
   reloadTime: 2
   damage: 0
-  reloadBulletCount: 0
-  currentBulletCount: 30
+  reloadBulletCount: 10
+  currentBulletCount: 10
   maxBulletCount: 0
-  carryBulletCount: 0
-  retroActionForce: 0
-  retroActionFineSightForce: 0
-  fineSightOriginPos: {x: 0, y: 0, z: 0}
+  carryBulletCount: 23
+  retroActionForce: 0.3
+  retroActionFineSightForce: 0.7
+  fineSightOriginPos: {x: 0.6, y: 0.22, z: -0.58}
   anim: {fileID: 130797648}
   muzzleFlash: {fileID: 1326845083}
   fireSound: {fileID: 8300000, guid: 85515c5cdf9d804469f8244c8c662cbc, type: 3}
@@ -575,13 +575,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914386489}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1326845081}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &914386491
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5603,6 +5603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGun: {fileID: 130797647}
+  originPos: {x: 0, y: 0, z: 0}
 --- !u!82 &1131842689
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5729,14 +5730,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326845080}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -2.8727, y: 0.37920016, z: 0.4269998}
-  m_LocalScale: {x: 0.1, y: 0.10000001, z: 0.10000002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.000253, y: 0.020291, z: -0.000688}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 914386490}
-  m_Father: {fileID: 130797645}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_Father: {fileID: 2095566087}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1326845082
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -11142,6 +11143,11 @@ Transform:
   m_Father: {fileID: 1131842686}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!4 &2095566087 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3968331098899573409, guid: df17c3ca062ae334d9728248fe1fa41e, type: 3}
+  m_PrefabInstance: {fileID: 130797644}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2395076653045717626
 Transform:
   m_ObjectHideFlags: 0

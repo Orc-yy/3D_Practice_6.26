@@ -39,18 +39,20 @@ public class PlayerController : MonoBehaviour
     // 카메라 회전 제한
     [SerializeField]
     private float cameraRotationLimit;
-    private float currentCameraRotationX = 0f;
+    private float currentCameraRotationX = 0f;  
 
     // 카메라 컴포넌트
     [SerializeField]
     private Camera theCamera;
     private Rigidbody myRigid;
+    private GunController gunController;
 
     void Start()
     {
         capusleCollider = GetComponent<CapsuleCollider>();
         myRigid = GetComponent<Rigidbody>();
         applySpeed = walkSpeed;
+        gunController = FindObjectOfType<GunController>();
 
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
@@ -150,6 +152,11 @@ public class PlayerController : MonoBehaviour
 
     private void Runnig()
     {
+        if(isCrouch)
+            Crouch(); // 달리기 시 앉은 상태 해제
+
+        gunController.CancelFineSight();
+
         isRun = true;
         applySpeed = runSpeed;
     }
