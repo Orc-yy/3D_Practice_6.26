@@ -30,6 +30,7 @@ public class GunController : MonoBehaviour
     // 필요한 컴포넌트
     [SerializeField]
     private Camera theCam;
+    private CrossHair crosshair;
 
 
     [SerializeField]
@@ -39,6 +40,7 @@ public class GunController : MonoBehaviour
     {
         originPos = Vector3.zero;
         audioSource = GetComponent<AudioSource>();
+        crosshair = FindObjectOfType<CrossHair>();
     }
 
     // Update is called once per frame
@@ -89,6 +91,7 @@ public class GunController : MonoBehaviour
     // 발사 후 계산
     private void Shoot()
     {
+        crosshair.FireAnimation(); // 크로스 헤어 애니메이션 실행
         currentGun.currentBulletCount--; // 총알 감소
         currentFireRate = currentGun.fireRate; // 연사 속도 재계산
         PlaySE(currentGun.fireSound); // 총알 발사 사운드 재생
@@ -103,7 +106,10 @@ public class GunController : MonoBehaviour
 
     private void Hit()
     {
-        if(Physics.Raycast(theCam.transform.position, theCam.transform.forward, out hitInfo, currentGun.range))
+        if(Physics.Raycast(theCam.transform.position, theCam.transform.forward + 
+            new Vector3(Random.Range(-crosshair.GetAccuracy() - currentGun.accuracy, crosshair.GetAccuracy() + currentGun.accuracy),
+                        Random.Range(-crosshair.GetAccuracy() - currentGun.accuracy, crosshair.GetAccuracy() + currentGun.accuracy), 0)
+                        , out hitInfo, currentGun.range))
         {
             GameObject clone = Instantiate(hit_effect_Prefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             Destroy(clone, 2f); // 2초 후 파괴
@@ -177,6 +183,7 @@ public class GunController : MonoBehaviour
     {
         isFineSightMode = !isFineSightMode;
         currentGun.anim.SetBool("FineSightMode", isFineSightMode);
+        crosshair.FineSightAnimation(isFineSightMode);
 
         if (isFineSightMode)
         {
@@ -265,5 +272,10 @@ public class GunController : MonoBehaviour
     public Gun GetGun()
     {
         return currentGun;
+    }
+
+    public bool GetFineSightMode()
+    {
+        return isFineSightMode;
     }
 }
