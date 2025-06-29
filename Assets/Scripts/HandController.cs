@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class HandController : MonoBehaviour
 {
+    // 활성화 여부
+    public static bool isActive = false;
+
+
     // 현재 장착된 Hand형 타입 무기
     [SerializeField]
     private Hand currentHand;
@@ -13,14 +17,13 @@ public class HandController : MonoBehaviour
     private bool isSwing = false;
 
     private RaycastHit hitInfo; // 닿은 면적의 정보가 저장됨
-
-
     
 
     // Update is called once per frame
     void Update()
     {
-        TryAttack();
+        if(isActive)
+            TryAttack();
     }
 
     private void TryAttack()
@@ -34,6 +37,7 @@ public class HandController : MonoBehaviour
             }
         }
     }
+
     IEnumerator AttackCoroutine()
     {
         isAttack = true; // 중복 실행 방지
@@ -75,5 +79,23 @@ public class HandController : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+
+    public void HandChange(Hand _hand)
+    {
+        if (WeaponManager.currentWeapon != null)
+        {
+            WeaponManager.currentWeapon.gameObject.SetActive(false);
+        }
+
+        currentHand = _hand;
+        WeaponManager.currentWeapon = currentHand.GetComponent<Transform>();
+        WeaponManager.currentWeaponAnim = currentHand.anim;
+
+
+        currentHand.transform.localPosition = Vector3.zero;
+        currentHand.gameObject.SetActive(true);
+        isActive = true;
     }
 }
