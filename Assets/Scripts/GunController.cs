@@ -113,7 +113,7 @@ public class GunController : MonoBehaviour
     // 재장전 시도
     private void TryReload()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentGun.carryBulletCount < currentGun.reloadBulletCount)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentGun.carryBulletCount > currentGun.reloadBulletCount)
         {
             CancelFineSight();
             StartCoroutine(ReloadCoroutine());
@@ -260,5 +260,10 @@ public class GunController : MonoBehaviour
     {
         audioSource.clip = _clip;
         audioSource.Play();
+    }
+
+    public Gun GetGun()
+    {
+        return currentGun;
     }
 }
