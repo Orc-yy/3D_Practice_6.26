@@ -856,7 +856,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -746.3, y: -344.9}
+  m_AnchoredPosition: {x: -632, y: -278}
   m_SizeDelta: {x: 182, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &734084204
@@ -6189,6 +6189,7 @@ GameObject:
   - component: {fileID: 1131842688}
   - component: {fileID: 1131842689}
   - component: {fileID: 1131842690}
+  - component: {fileID: 1131842691}
   m_Layer: 2
   m_Name: Holder
   m_TagString: Untagged
@@ -6358,6 +6359,22 @@ MonoBehaviour:
   - {fileID: 5208752408520735734}
   gunController: {fileID: 1131842688}
   handController: {fileID: 1131842687}
+--- !u!114 &1131842691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131842685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a9c57a2e21e0a45818a3cc302e029a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limitPos: {x: 0.18, y: 0.1, z: 0}
+  fineSightLimitPos: {x: 0.005, y: 0.005, z: 0}
+  smoothSway: {x: 0.05, y: 0.03, z: 0}
+  gunController: {fileID: 1131842688}
 --- !u!1 &1178939909
 GameObject:
   m_ObjectHideFlags: 0
