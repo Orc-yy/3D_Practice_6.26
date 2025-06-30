@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandController : CloseWeaponController
+public class AxeController : CloseWeaponController
 {
     // 활성화 여부
     public static bool isActive = false;
+
+    
+
 
     // Update is called once per frame
     void Update()
@@ -22,7 +25,6 @@ public class HandController : CloseWeaponController
             {
                 isSwing = false;
                 Debug.Log(hitInfo.transform.name);
-
             }
             yield return null;
         }
