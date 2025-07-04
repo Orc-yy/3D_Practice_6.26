@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody myRigid;
     private GunController gunController;
     private CrossHair crosshair;
+    private StatusController statusController;
+
 
     void Start()
     {
@@ -59,7 +61,7 @@ public class PlayerController : MonoBehaviour
         myRigid = GetComponent<Rigidbody>();
         gunController = FindObjectOfType<GunController>();
         crosshair = FindObjectOfType<CrossHair>();
-
+        statusController = FindObjectOfType<StatusController>();
 
 
         // 초기화
@@ -147,6 +149,7 @@ public class PlayerController : MonoBehaviour
         // 점프 시 앉은 상태 해제
         if (isCrouch)
             Crouch();
+        statusController.DecreaseStamina(100);
         myRigid.velocity = transform.up * jumpForce;
     }
 
@@ -169,7 +172,7 @@ public class PlayerController : MonoBehaviour
             Crouch(); // 달리기 시 앉은 상태 해제
 
         gunController.CancelFineSight();
-
+        statusController.DecreaseStamina(10);
         isRun = true;
         crosshair.RunningAnimation(isRun);
         applySpeed = runSpeed;
@@ -223,6 +226,7 @@ public class PlayerController : MonoBehaviour
 
         theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
     }
+
     private void CharacterRotation()
     {
         // 좌우 캐릭터 회전
