@@ -28,7 +28,6 @@ public class StatusController : MonoBehaviour
     // 스테미나 감소 여부
     private bool spUsed;
 
-
     // 방어력
     [SerializeField]
     private int dp;
@@ -43,7 +42,6 @@ public class StatusController : MonoBehaviour
     [SerializeField]
     private int hungryDecreaseTime;
     private int currentHungryDecreaseTime;
-
 
     // 목마름
     [SerializeField]
@@ -60,7 +58,6 @@ public class StatusController : MonoBehaviour
     private int satisfy;
     private int currentSatisfy;
 
-
     [SerializeField]
     private Image[] images_Gauge;
 
@@ -76,7 +73,6 @@ void Start()
         currentHungry = hungry;
         currentThirsty = thirsty;
         currentSatisfy = satisfy;
-
     }
 
     // Update is called once per frame
@@ -86,8 +82,7 @@ void Start()
         Thirsty();
         SPRechargeTime();
         SPRecover();
-        GaugeUpdate();  
-
+        GaugeUpdate();
     }
 
     private void SPRechargeTime()
@@ -98,7 +93,7 @@ void Start()
             {
                 currentSpRechargeTime++;
             }
-            else 
+            else
                 spUsed = false;
 
         }
@@ -110,6 +105,7 @@ void Start()
         {
             currentSp += spIncreaseSpeed;
         }
+        
     }
 
 
@@ -153,6 +149,87 @@ void Start()
         }
     }
 
+    public void IncreaseHP(int _count)
+    {
+        if(currentHp + _count < hp)
+        {
+            currentHp += _count;
+        }
+        else 
+            currentHp = hp;
+    }
+
+    public void DecreaseHP(int _count)
+    {
+        if (currentDp > 0)
+        {
+            DecreaseDP(_count);
+            return;
+        }
+        currentHp -= _count;
+
+        if (currentHp < 0)
+            Debug.Log("캐릭터의 HP 가 0이 됨");
+    }
+
+    public void IncreaseDP(int _count)
+    {
+        if (currentDp + _count < dp)
+        {
+            currentDp += _count;
+        }
+        else
+            currentDp = dp;
+    }
+
+    public void DecreaseDP(int _count)
+    {
+        currentDp -= _count;
+        if (currentDp < 0)
+            Debug.Log("캐릭터의 DP 가 0이 됨");
+    }
+
+    public void IncreaseHungry(int _count)
+    {
+        if (currentHungry + _count < hungry)
+        {
+            currentHungry += _count;
+        }
+        else
+            currentHungry = hungry;
+    }
+
+    public void DecreaseHungry(int _count)
+    {
+        if(currentHungry - _count < 0)
+        {
+            currentHungry = 0;
+        }
+        else
+            currentHungry -= _count;
+    }
+
+    public void IncreaseThirsty(int _count)
+    {
+        if (currentThirsty + _count < thirsty)
+        {
+            currentThirsty += _count;
+        }
+        else
+            currentThirsty = thirsty;
+    }
+
+    public void DecreaseThirsty(int _count)
+    {
+        if (currentThirsty - _count < 0)
+        {
+            currentThirsty = 0;
+        }
+        else
+            currentThirsty -= _count;
+    }
+
+
     private void GaugeUpdate()
     {
         images_Gauge[HP].fillAmount = (float)currentHp / hp;
@@ -175,6 +252,11 @@ void Start()
         }
         else
             currentSp = 0;
+    }
+
+    public int GetCurrentSP()
+    {
+        return currentSp;
     }
 
 }
