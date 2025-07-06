@@ -172,6 +172,24 @@ void Start()
             Debug.Log("캐릭터의 HP 가 0이 됨");
     }
 
+    public void IncreaseSP(int _count)
+    {
+        if (currentSp + _count < sp)
+        {
+            currentSp += _count;
+        }
+        else
+            currentHp = sp;
+    }
+
+    public void DecreaseSP(int _count)
+    {
+        currentSp -= _count;
+
+        if (currentSp < 0)
+            Debug.Log("캐릭터의 SP 가 0이 됨");
+    }
+
     public void IncreaseDP(int _count)
     {
         if (currentDp + _count < dp)

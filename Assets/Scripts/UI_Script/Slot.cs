@@ -17,11 +17,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler , IDr
     [SerializeField]
     private GameObject go_CountImage;
 
-    private WeaponManager theWeaponManager;
+    private ItemEffectDataBase theItemEffectDataBaase;
+
 
     void Start()
     {
-        theWeaponManager = FindObjectOfType<WeaponManager>();
+        theItemEffectDataBaase = FindObjectOfType<ItemEffectDataBase>();    
     }
 
     private void SetColor(float _alpha)
@@ -80,17 +81,11 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler , IDr
         {
             if(item != null)
             {
-                if(item.itemType == Item.ItemType.Equipment)
-                {
-                    // 장착
-                    StartCoroutine(theWeaponManager.ChangeWeaponCoroutine(item.weaponType, item.itemName));
-                }
-                else
-                {
                     // 소모
-                    Debug.Log(item.itemName + " 을 사용했습니다.");
+                 theItemEffectDataBaase.UseItem(item);
+                if(item.itemType == Item.ItemType.Used)
                     SetSlotCount(-1);
-                }
+
             }
         }
     }
