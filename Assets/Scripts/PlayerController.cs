@@ -175,10 +175,10 @@ public class PlayerController : MonoBehaviour
             Crouch(); // 달리기 시 앉은 상태 해제
 
         gunController.CancelFineSight();
-        statusController.DecreaseStamina(10);
+        statusController.DecreaseStamina(5);
+        applySpeed = runSpeed;
         isRun = true;
         crosshair.RunningAnimation(isRun);
-        applySpeed = runSpeed;
     }
 
     private void RunnigCancel()

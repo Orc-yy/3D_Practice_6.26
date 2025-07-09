@@ -7,6 +7,8 @@ public class HandController : CloseWeaponController
     // 활성화 여부
     public static bool isActive = false;
 
+    
+
     // Update is called once per frame
     void Update()
     {

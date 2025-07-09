@@ -13,8 +13,8 @@ public class PickaxeController : CloseWeaponController
     {
         WeaponManager.currentWeapon = currentCloseWeapon.GetComponent<Transform>();
         WeaponManager.currentWeaponAnim = currentCloseWeapon.anim;
-    }
 
+    }
 
     // Update is called once per frame
     void Update()

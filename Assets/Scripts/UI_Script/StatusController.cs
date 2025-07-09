@@ -179,7 +179,7 @@ void Start()
             currentSp += _count;
         }
         else
-            currentHp = sp;
+            currentSp = sp;
     }
 
     public void DecreaseSP(int _count)
