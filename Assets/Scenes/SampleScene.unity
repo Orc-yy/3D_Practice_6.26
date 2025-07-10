@@ -3864,6 +3864,8 @@ MonoBehaviour:
     clip: {fileID: 0}
   - name: 
     clip: {fileID: 0}
+  - name: Animal_Hit
+    clip: {fileID: 8300000, guid: 37619c15b6f9fec479428b47c1d8e7cb, type: 3}
   bgmSounds:
   - name: 
     clip: {fileID: 0}
@@ -14660,9 +14662,10 @@ GameObject:
   - component: {fileID: 1335218332}
   - component: {fileID: 1335218331}
   - component: {fileID: 1335218334}
+  - component: {fileID: 1335218335}
   m_Layer: 0
   m_Name: Pig
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14704,7 +14707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335218330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.65, y: 0.27, z: 36}
+  m_LocalPosition: {x: -6.92, y: 3.46, z: 18.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1907523672}
@@ -14724,13 +14727,126 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalName: Pig
-  hp: 2
-  walkSpeed: 4
+  hp: 5
+  walkSpeed: 6
+  runSpeed: 24
   walkTime: 5
   waitTime: 4
+  runTime: 3
   anim: {fileID: 1907523673}
   rigid: {fileID: 1335218332}
   boxCol: {fileID: 1335218331}
+  sound_pig_Normal:
+  - {fileID: 8300000, guid: 7d36cd3f42eeb104a9184e2d93621eec, type: 3}
+  - {fileID: 8300000, guid: 772cd6d10676d0f4f9d319f249aab518, type: 3}
+  - {fileID: 8300000, guid: 76da42d4ec635894eab3663bfa53e8c7, type: 3}
+  sound_pig_Hurt: {fileID: 8300000, guid: 621099f4f9a33e54bba8f0498e4b2df5, type: 3}
+  sound_pig_Dead: {fileID: 8300000, guid: e57da67ab70449543933d0b5e2911fc2, type: 3}
+--- !u!82 &1335218335
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335218330}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 5.3843384
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.08751616
+      value: 0.983078
+      inSlope: 0.26243517
+      outSlope: 0.26243517
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.83252853
+    - serializedVersion: 3
+      time: 0.5864131
+      value: 0.4557953
+      inSlope: -0.74314255
+      outSlope: -0.74314255
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.45792738
+      outWeight: 0.3203317
+    - serializedVersion: 3
+      time: 0.9770813
+      value: 0
+      inSlope: 0.1575642
+      outSlope: 0.1575642
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.70272106
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.27601624
+      value: 0.99954224
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1337249256 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5205413531876290609, guid: f7c1897623534a94eb3e42b1285bbf26, type: 3}
