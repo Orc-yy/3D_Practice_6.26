@@ -65,7 +65,6 @@ public class SoundManager : MonoBehaviour
                 Debug.Log("모든 가용 AudioSource가 사용중입니다.");
                 return;
             }
-            Debug.Log(_name + "사운드가 SoundManager에 없습니다.");
         }
     }
 
