@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private float runSpeed;
     [SerializeField]
     private float crouchSpeed; // 앉았을 때 스피드
+    [SerializeField]
+    private LayerMask layerMask;
 
     private float applySpeed;
 
@@ -135,13 +137,13 @@ public class PlayerController : MonoBehaviour
 
     private void IsGround()
     {
-        isGround = Physics.Raycast(transform.position, Vector3.down, capusleCollider.bounds.extents.y + 0.3f);
-        crosshair.JumpingAnimation(!isGround);
+        isGround = Physics.Raycast(transform.position, Vector3.down, capusleCollider.bounds.extents.y + 0.3f, layerMask);
+        crosshair.JumpingAnimation(!isGround); // !isGround = true
     }
 
     private void TryJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGround && statusController.GetCurrentSP() > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && statusController.GetCurrentSP() > 0 && isGround)
         {
             Jump();
         }

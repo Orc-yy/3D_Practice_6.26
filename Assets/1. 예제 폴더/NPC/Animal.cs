@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Animal : MonoBehaviour
 {
@@ -9,10 +10,10 @@ public class Animal : MonoBehaviour
 
     [SerializeField] protected float walkSpeed;
     [SerializeField] protected float runSpeed;
-    [SerializeField] protected float turnningSpeed;
-    protected float applySpeed;
 
-    protected Vector3 direction;
+
+
+    protected Vector3 destination;
 
 
     // 상태 변수
@@ -25,6 +26,7 @@ public class Animal : MonoBehaviour
     [SerializeField] protected float waitTime;
     [SerializeField] protected float runTime;
     protected float currentTime;
+    protected NavMeshAgent nav;
 
 
     // 필요한 컴포넌트
@@ -39,6 +41,7 @@ public class Animal : MonoBehaviour
 
     void Start()
     {
+        nav = GetComponent<NavMeshAgent>();
         theAudio = GetComponent<AudioSource>();
         currentTime = waitTime;
         isAction = true;
@@ -50,7 +53,6 @@ public class Animal : MonoBehaviour
         if (!isDead)
         {
             Move();
-            Rotation();
             ElapseTime();
         }
     }
@@ -59,19 +61,12 @@ public class Animal : MonoBehaviour
     {
         if (isWalking || isRunning)
         {
-            rigid.MovePosition(transform.position + (transform.forward * applySpeed * Time.deltaTime));
+            // rigid.MovePosition(transform.position + (transform.forward * applySpeed * Time.deltaTime));
+            nav.SetDestination(transform.position + destination * 5f);
         }
     }
 
-    protected void Rotation()
-    {
-        if (isWalking || isRunning)
-        {
-            Vector3 _rotation = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, direction.y, 0f), turnningSpeed);
-            rigid.MoveRotation(Quaternion.Euler(_rotation));
-        }
-    }
-
+    
     protected void ElapseTime()
     {
         if (isAction)
@@ -88,9 +83,10 @@ public class Animal : MonoBehaviour
     protected virtual void ReSetting()
     {
         isWalking = false; isRunning = false; isAction = true;
-        applySpeed = walkSpeed;
+        nav.speed = walkSpeed;
+        nav.ResetPath();
         anim.SetBool("Walking", isWalking); anim.SetBool("Running", isRunning);
-        direction.Set(0f, Random.Range(0f, 360f), 0f);
+        destination.Set(Random.Range(-0.2f, 0.2f), 0f , Random.Range(0.5f, 0.1f));
         
     }
 
@@ -99,7 +95,7 @@ public class Animal : MonoBehaviour
         isWalking = true;
         anim.SetBool("Walking", isWalking);
         currentTime = walkTime;
-        applySpeed = walkSpeed;
+        nav.speed = walkSpeed;
         Debug.Log("걷기");
     }
 
